@@ -52,7 +52,7 @@ class HomeScreen extends StatelessWidget {
             title: const Text('Basic Notification'),
             trailing: IconButton(
               onPressed: () {
-                // LocalNotificationService.cancelNotification(0);
+                LocalNotificationService.cancelNotification(0);
               },
               icon: const Icon(
                 Icons.cancel,
@@ -63,13 +63,13 @@ class HomeScreen extends StatelessWidget {
           //repeated
           ListTile(
             onTap: () {
-              // LocalNotificationService.showRepeatedNotification();
+              LocalNotificationService.showRepeatedNotification();
             },
             leading: const Icon(Icons.notifications),
             title: const Text('Repeated Notification'),
             trailing: IconButton(
               onPressed: () {
-                // LocalNotificationService.cancelNotification(1);
+                LocalNotificationService.cancelNotification(1);
               },
               icon: const Icon(
                 Icons.cancel,

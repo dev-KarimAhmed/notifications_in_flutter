@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class LocalNotificationService {
@@ -25,7 +26,7 @@ class LocalNotificationService {
   //basic Notification
   static void showBasicNotification() async {
     AndroidNotificationDetails android = const AndroidNotificationDetails(
-      'id 1',
+      'id 0',
       'basic notification',
       importance: Importance.max,
       priority: Priority.high,
@@ -40,5 +41,30 @@ class LocalNotificationService {
       details,
       payload: "Payload Data",
     );
+  }
+
+  //repeated Notification
+  static void showRepeatedNotification() async {
+    AndroidNotificationDetails android = const AndroidNotificationDetails(
+      'id 1',
+      'Repeated notification',
+      importance: Importance.max,
+      priority: Priority.high,
+    );
+    NotificationDetails details = NotificationDetails(
+      android: android,
+    );
+    await flutterLocalNotificationsPlugin.periodicallyShow(
+      1,
+      'Repeated Notification',
+      'body',
+      RepeatInterval.everyMinute,
+      details,
+      payload: "Payload Data",
+    );
+  }
+
+  static Future<void> cancelNotification(int id) async {
+    await flutterLocalNotificationsPlugin.cancel(id);
   }
 }
