@@ -41,6 +41,4 @@ class LocalNotificationService {
       payload: "Payload Data",
     );
   }
-
-
 }
