@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
@@ -79,7 +80,12 @@ class LocalNotificationService {
     NotificationDetails details = NotificationDetails(
       android: android,
     );
-    tz.setLocalLocation(tz.getLocation('Africa/Cairo'));
+    log("Before");
+    log(tz.local.name);
+    log(tz.TZDateTime.now(tz.local).hour.toString());
+    final String currentTimeZone = await FlutterTimezone.getLocalTimezone();
+    tz.setLocalLocation(tz.getLocation(currentTimeZone));
+    log("After");
     log(tz.local.name);
     log(tz.TZDateTime.now(tz.local).hour.toString());
     await flutterLocalNotificationsPlugin.zonedSchedule(
@@ -92,8 +98,8 @@ class LocalNotificationService {
         2024,
         7,
         23,
+        8,
         7,
-        56,
       ),
       details,
       payload: "Payload Data",
