@@ -79,6 +79,7 @@ class LocalNotificationService {
     NotificationDetails details = NotificationDetails(
       android: android,
     );
+    tz.setLocalLocation(tz.getLocation('Africa/Cairo'));
     log(tz.local.name);
     log(tz.TZDateTime.now(tz.local).hour.toString());
     await flutterLocalNotificationsPlugin.zonedSchedule(
@@ -88,11 +89,11 @@ class LocalNotificationService {
       // tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
       tz.TZDateTime(
         tz.local,
-        tz.TZDateTime.now(tz.local).year,
-        tz.TZDateTime.now(tz.local).month,
-        tz.TZDateTime.now(tz.local).day,
-        tz.TZDateTime.now(tz.local).hour,
-        tz.TZDateTime.now(tz.local).minute + 1,
+        2024,
+        7,
+        23,
+        7,
+        56,
       ),
       details,
       payload: "Payload Data",
