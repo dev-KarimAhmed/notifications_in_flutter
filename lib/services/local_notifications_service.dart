@@ -99,7 +99,7 @@ class LocalNotificationService {
         7,
         23,
         8,
-        7,
+        15,
       ),
       details,
       payload: "Payload Data",
