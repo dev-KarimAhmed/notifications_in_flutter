@@ -29,11 +29,12 @@ class LocalNotificationService {
 
   //basic Notification
   static void showBasicNotification() async {
-    AndroidNotificationDetails android = const AndroidNotificationDetails(
+    AndroidNotificationDetails android =  AndroidNotificationDetails(
       'id 0',
       'basic notification',
       importance: Importance.max,
       priority: Priority.high,
+      sound: RawResourceAndroidNotificationSound('notification.mp3'.split('.').first),
     );
     NotificationDetails details = NotificationDetails(
       android: android,
