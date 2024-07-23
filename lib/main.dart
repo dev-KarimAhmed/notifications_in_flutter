@@ -80,12 +80,13 @@ class HomeScreen extends StatelessWidget {
           //Schduled
           ListTile(
             onTap: () {
+              LocalNotificationService.showScheduledNotification();
             },
             leading: const Icon(Icons.notifications),
             title: const Text('Schduled Notification'),
             trailing: IconButton(
               onPressed: () {
-                // LocalNotificationService.cancelNotification(2);
+                LocalNotificationService.cancelNotification(2);
               },
               icon: const Icon(
                 Icons.cancel,
