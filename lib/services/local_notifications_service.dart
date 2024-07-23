@@ -79,13 +79,21 @@ class LocalNotificationService {
     NotificationDetails details = NotificationDetails(
       android: android,
     );
-    // log(tz.local.name);
-    // log(tz.TZDateTime.now(tz.local).hour.toString());
+    log(tz.local.name);
+    log(tz.TZDateTime.now(tz.local).hour.toString());
     await flutterLocalNotificationsPlugin.zonedSchedule(
       2,
       'Scheduled Notification',
       'body',
-      tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
+      // tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
+      tz.TZDateTime(
+        tz.local,
+        tz.TZDateTime.now(tz.local).year,
+        tz.TZDateTime.now(tz.local).month,
+        tz.TZDateTime.now(tz.local).day,
+        tz.TZDateTime.now(tz.local).hour,
+        tz.TZDateTime.now(tz.local).minute + 1,
+      ),
       details,
       payload: "Payload Data",
       uiLocalNotificationDateInterpretation:
